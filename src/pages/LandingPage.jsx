@@ -163,8 +163,22 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-white/[0.06] text-center text-slate-600 text-sm">
-        <p>ReelFlow — Built with the official Meta Instagram API. Not affiliated with Meta Platforms.</p>
+      <footer className="py-8 px-6 border-t border-white/[0.06] text-center text-slate-500 text-xs">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-5xl mx-auto mb-3">
+          <p>© {new Date().getFullYear()} ReelFlow. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" id="footer-privacy-policy-link" className="text-slate-400 hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/login" className="text-slate-400 hover:text-white transition-colors">
+              Login
+            </Link>
+            <Link to="/register" className="text-slate-400 hover:text-white transition-colors">
+              Register
+            </Link>
+          </div>
+        </div>
+        <p className="text-slate-600 text-[11px]">ReelFlow — Built with the official Meta Instagram API. Not affiliated with Meta Platforms.</p>
       </footer>
     </div>
   );

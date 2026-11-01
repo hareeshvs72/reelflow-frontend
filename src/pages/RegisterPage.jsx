@@ -136,6 +136,13 @@ export default function RegisterPage() {
             Already have an account?{' '}
             <Link to="/login" id="link-to-login" className="text-brand-400 hover:text-brand-300 font-medium">Sign in</Link>
           </p>
+
+          <p className="text-center text-xs text-slate-600 mt-4">
+            By creating an account, you agree to our{' '}
+            <Link to="/privacy-policy" className="text-slate-400 hover:text-white hover:underline">
+              Privacy Policy
+            </Link>
+          </p>
         </div>
       </div>
     </div>
