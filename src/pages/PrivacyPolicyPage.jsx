@@ -307,7 +307,14 @@ export default function PrivacyPolicyPage() {
                 Request Deletion
               </a>
             </div>
-            <p className="text-xs text-slate-500 mt-3">
+            <p className="text-xs text-slate-400 mt-3">
+              For complete step-by-step instructions and immediate in-app deletion steps, visit our{' '}
+              <Link to="/data-deletion" className="text-brand-400 hover:underline font-medium">
+                Data Deletion Instructions Page
+              </Link>
+              .
+            </p>
+            <p className="text-xs text-slate-500 mt-2">
               Valid deletion requests are processed in accordance with applicable legal and platform requirements,
               and all stored tokens and assets are permanently purged within 30 days.
             </p>

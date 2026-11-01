@@ -170,6 +170,9 @@ export default function LandingPage() {
             <Link to="/privacy-policy" id="footer-privacy-policy-link" className="text-slate-400 hover:text-white transition-colors">
               Privacy Policy
             </Link>
+            <Link to="/data-deletion" id="footer-data-deletion-link" className="text-slate-400 hover:text-white transition-colors">
+              Data Deletion
+            </Link>
             <Link to="/login" className="text-slate-400 hover:text-white transition-colors">
               Login
             </Link>
