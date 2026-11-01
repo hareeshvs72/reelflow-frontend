@@ -77,7 +77,7 @@ export default function MetaSetupPage() {
     },
   });
 
-  const redirectUri = configData?.redirectUri || 'http://localhost:5000/api/instagram/callback';
+  const redirectUri = configData?.redirectUri || 'https://reelflow-5s62.onrender.com/api/instagram/callback';
   const isAppConfigured = configData?.appIdConfigured && configData?.appSecretConfigured;
   const connectedAccount = configData?.connectedAccount;
   const isConnected = Boolean(connectedAccount && connectedAccount.isConnected);

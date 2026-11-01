@@ -1,4 +1,4 @@
-import api from './api.js';
+import api, { API_BASE_URL } from './api.js';
 
 export const authService = {
   register: (data) => api.post('/auth/register', data),
@@ -8,7 +8,7 @@ export const authService = {
 };
 
 export const instagramService = {
-  connect: () => { window.location.href = '/api/instagram/connect'; },
+  connect: () => { window.location.href = `${API_BASE_URL}/api/instagram/connect`; },
   getAccount: () => api.get('/instagram/account'),
   getConfigStatus: () => api.get('/instagram/config-status'),
   getReadiness: () => api.get('/instagram/readiness'),
