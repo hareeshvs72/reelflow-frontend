@@ -10,6 +10,10 @@ export function AuthProvider({ children }) {
   const fetchMe = useCallback(async () => {
     try {
       const res = await authService.getMe();
+      const token = res.data?.token || res.token || res.data?.data?.token;
+      if (token) {
+        localStorage.setItem('reelflow_token', token);
+      }
       setUser(res.data.data.user);
     } catch {
       setUser(null);
@@ -24,17 +28,26 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     const res = await authService.login(credentials);
+    const token = res.data?.token || res.token || res.data?.data?.token;
+    if (token) {
+      localStorage.setItem('reelflow_token', token);
+    }
     setUser(res.data.data.user);
     return res.data;
   };
 
   const register = async (data) => {
     const res = await authService.register(data);
+    const token = res.data?.token || res.token || res.data?.data?.token;
+    if (token) {
+      localStorage.setItem('reelflow_token', token);
+    }
     setUser(res.data.data.user);
     return res.data;
   };
 
   const logout = async () => {
+    localStorage.removeItem('reelflow_token');
     await authService.logout().catch(() => null);
     setUser(null);
   };
