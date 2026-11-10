@@ -8,9 +8,23 @@ export const authService = {
 };
 
 export const instagramService = {
-  connect: () => { window.location.href = `${API_BASE_URL}/api/instagram/connect`; },
+  connect: async () => {
+    try {
+      const res = await api.get('/instagram/connect?json=true');
+      if (res.data?.data?.authUrl) {
+        window.location.href = res.data.data.authUrl;
+        return;
+      }
+    } catch (err) {
+      console.warn('API connect request failed, falling back to direct URL', err);
+    }
+    const token = localStorage.getItem('reelflow_token');
+    const query = token ? `?token=${encodeURIComponent(token)}` : '';
+    window.location.href = `${API_BASE_URL}/api/instagram/connect${query}`;
+  },
   getAccount: () => api.get('/instagram/account'),
   getConfigStatus: () => api.get('/instagram/config-status'),
+  verifyToken: () => api.get('/instagram/verify'),
   getReadiness: () => api.get('/instagram/readiness'),
   testConnection: () => api.post('/instagram/test-connection'),
   disconnect: () => api.post('/instagram/disconnect'),

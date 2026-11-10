@@ -124,12 +124,12 @@ export default function MetaSetupPage() {
     {
       step: 4,
       title: 'Configure Instagram Login Flow',
-      description: 'Select "Instagram API with Instagram Login" as the authentication mode.',
+      description: 'Select "Instagram API (Unified Login)" as the authentication mode.',
       status: isAppConfigured ? 'Completed' : 'Action Required',
-      actionUrl: 'https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/',
+      actionUrl: 'https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/',
       actionLabel: 'Official Guide',
       isAutomated: false,
-      detail: 'Supports Instagram Professional Creator and Business accounts with standalone Instagram Login.',
+      detail: 'Supports Instagram Professional Creator and Business accounts with Meta Unified Login.',
     },
     {
       step: 5,
@@ -141,14 +141,14 @@ export default function MetaSetupPage() {
       isAutomated: true,
       hasCopy: true,
       copyValue: redirectUri,
-      detail: `Paste into Meta App: Instagram Login → Settings → Valid OAuth Redirect URIs: ${redirectUri}`,
+      detail: `Paste into Meta App: Facebook Login for Business → Settings → Valid OAuth Redirect URIs: ${redirectUri}`,
     },
     {
       step: 6,
       title: 'Configure Required Instagram Permissions',
-      description: 'Activate instagram_business_basic and instagram_business_content_publish.',
+      description: 'Activate instagram_basic and instagram_content_publish.',
       status: isConnected ? 'Completed' : isAppConfigured ? 'In Progress' : 'Action Required',
-      actionUrl: 'https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/content-publishing',
+      actionUrl: 'https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/content-publishing',
       actionLabel: 'Permissions Docs',
       isAutomated: true,
       detail: 'In Development Mode, all requested scopes are immediately available for test users without App Review.',
@@ -456,7 +456,9 @@ export default function MetaSetupPage() {
               <div className="p-3 rounded-xl bg-surface-100/50">
                 <span className="text-slate-400">Publishing Permissions</span>
                 <p className="font-bold text-white text-sm mt-1">Active (2/2 scopes)</p>
-                <span className="text-emerald-400 text-[10px]">instagram_business_content_publish</span>
+                <span className="text-emerald-400 text-[10px]">
+                  {testResult.permissions?.join(', ') || 'instagram_basic, instagram_content_publish'}
+                </span>
               </div>
             </div>
           ) : (
